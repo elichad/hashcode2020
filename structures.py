@@ -12,6 +12,7 @@ class Library:
         self.signup = signup
         self.scans = scans
         self.books = books #dict {id: score}
+        print(self.books)
 
     def get_total_score(self):
         tot = 0
@@ -20,11 +21,11 @@ class Library:
         return tot
 
     def get_todays_books(self,all_scanned):
-        ids = OrderedDict()
+        ids = []
         while len(ids) < self.scans and len(self.books.keys())>0:
             best_id = max(self.books.keys(), key=lambda k: self.books[k])
             if best_id not in all_scanned:
-                ids[best_id] = self.id
+                ids.append(best_id)
             del self.books[best_id] #always delete
         return ids
         #after this in main code: want all_scanned.add(ids)
