@@ -7,6 +7,8 @@ def gen_output(libs):
         out.write("{}\n".format(len(libs.keys())))
         for lib_id in libs.keys():
             book_list = libs[lib_id]
+            if len(book_list)==0:
+                continue
             out.write("{} {}\n".format(lib_id,len(book_list)))
             out.write(" ".join([str(b) for b in book_list])+"\n")
 
