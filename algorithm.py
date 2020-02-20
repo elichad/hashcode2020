@@ -9,7 +9,7 @@ from hash_parser import get_data
 libs.append(structures.Library(1,1,0,2,{1:10000}))
 libs.append(structures.Library(2,1,1,2,{2:40})) """
 
-tot_books, tot_libs, tot_days, books, libs = get_data("b_read_on.txt")
+tot_books, tot_libs, tot_days, books, libs = get_data("a_example.txt")
 
 all_scanned = set()
 libs_to_books = OrderedDict()
@@ -24,19 +24,13 @@ for l in sorted_libs:
   print(l.id)
   bookos = l.get_ordered_books()
   after_books = []
-  libs_to_books[l.id] = []
   print("books: {}".format(bookos))
   for booko in bookos:
-    print("Bookko:", booko)
     if (booko not in all_scanned):
-      print("Adding", booko)
       all_scanned.add(booko)
       after_books.append(booko)
   
-  if len(bookos) > 0:
+  if len(after_books) > 0:
     libs_to_books[l.id] = after_books
-
-for books in libs_to_books.values():
-  print(books)
 
 output.gen_output(libs_to_books)
