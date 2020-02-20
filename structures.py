@@ -18,15 +18,14 @@ class Library:
         return tot
 
     def get_todays_books(self,all_scanned):
-        ids = set()
+        ids = {}
         while len(ids) < self.scans:
             best_id = max(self.books.keys(), key=lambda k: self.books[k])
             if best_id not in all_scanned:
-                ids.add(best_id)
+                ids[best_id] = self.id
             del self.books[best_id] #always delete
         return ids
         #after this in main code: want all_scanned.add(ids)
-                
         
 #dict((k, bigdict[k]) for k in ('l', 'm', 'n'))
 #initialise with : Library.books = dict((k, all_books[k] for k in lib_book_ids))    
