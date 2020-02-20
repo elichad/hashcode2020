@@ -1,3 +1,5 @@
+from collections import OrderedDict
+
 class Book: #unused?
     def __init__(self, id, score):
         self.id = id
@@ -18,8 +20,8 @@ class Library:
         return tot
 
     def get_todays_books(self,all_scanned):
-        ids = {}
-        while len(ids) < self.scans:
+        ids = OrderedDict()
+        while len(ids) < self.scans and len(self.books.keys())>0:
             best_id = max(self.books.keys(), key=lambda k: self.books[k])
             if best_id not in all_scanned:
                 ids[best_id] = self.id
