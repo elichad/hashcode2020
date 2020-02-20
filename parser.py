@@ -27,7 +27,7 @@ def get_data(filename="input.txt"):
             # print(book, book_scores[book])
             book_id = book
             book_score = book_scores[book]
-            book_id_dict[book_id]=book_score
+            book_id_dict[int(book_id)]=int(book_score)
 
         #  print(type(lines))
         # print(book_id_dict)
@@ -56,19 +56,17 @@ def get_data(filename="input.txt"):
         book_lib_dict = {}
 
         for book in range(0,len(books_in_lib)):
-
-            # print(book, book_scores[book])
             book_id = book
             # print(book_id)
             # print(books_in_lib[book])
             book_score = books_in_lib[book]
-            book_lib_dict[book_id]=book_score
+            book_lib_dict[int(book_id)]=int(book_score)
         library_id = library/2
         # print(book_lib_dict)
         library_obj = Library(library_id, num_books_in_lib,signup_process_days, books_per_day, book_lib_dict )
         list_libraries.append(library_obj)
     # print(list_libraries)
-    return(total_books,total_libraries,total_days,book_id_dict, list_libraries)
+    return(int(total_books),int(total_libraries),int(total_days),book_id_dict, list_libraries)
 
 
 get_data('a_example.txt')
