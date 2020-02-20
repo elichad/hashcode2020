@@ -28,6 +28,12 @@ class Library:
             del self.books[best_id] #always delete
         return ids
         #after this in main code: want all_scanned.add(ids)
+
+    def get_ordered_books(self):
+        s = sorted(self.books.keys(), key=lambda k: self.books[k])
+        s.reverse()
+        return s
+
         
 #dict((k, bigdict[k]) for k in ('l', 'm', 'n'))
 #initialise with : Library.books = dict((k, all_books[k] for k in lib_book_ids))    
@@ -40,5 +46,5 @@ if __name__=="__main__":
     scanned = set()
     for lib_id in libs:
         lib = libs[lib_id]
-        print(lib_id, lib.get_total_score(), lib.get_todays_books(scanned), lib.get_total_score()) #very well written test: 0 30 {0,1} 0 (but book 1 is scanned before 0)
+        print(lib_id, lib.get_ordered_books(), lib.get_total_score(), lib.get_todays_books(scanned), lib.get_total_score()) #very well written test: 0 30 {0,1} 0 (but book 1 is scanned before 0)
 
