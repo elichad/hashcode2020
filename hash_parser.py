@@ -14,7 +14,7 @@ def get_data(filename="input.txt"):
         total_libraries = int(first_line[1])
         total_days = int(first_line[2])
 
-        # print(total_books,total_libs,total_days)
+        # print(total_books,total_libraries,total_days)
 
         book_scores = str(lines[1])
         book_scores = book_scores.split()
@@ -32,13 +32,11 @@ def get_data(filename="input.txt"):
         #  print(type(lines))
         # print(book_id_dict)
 
-    del lines[0:2]
-
     libraries = lines
     # print(libraries)
     list_libraries = []
 
-    for library in range(0, len(libraries), 2):
+    for library in range(2, len(libraries), 2):
         # print(library)
 
         library_info = str(libraries[library])
@@ -59,14 +57,18 @@ def get_data(filename="input.txt"):
             book_id = book
             # print(book_id)
             # print(books_in_lib[book])
-            book_score = books_in_lib[book]
+            # book_score = books_in_lib[book]
+
+            book_score = book_id_dict[book_id]
+            # print('score',book_score)
+
             book_lib_dict[int(book_id)]=int(book_score)
         library_id = library/2
-        # print(book_lib_dict)
+        print(book_lib_dict)
         library_obj = Library(int(library_id), int(num_books_in_lib),int(signup_process_days), int(books_per_day), book_lib_dict )
         list_libraries.append(library_obj)
     # print(list_libraries)
     return(int(total_books),int(total_libraries),int(total_days),book_id_dict, list_libraries)
 
 
-get_data('a_example.txt')
+get_data('b_read_on.txt')
