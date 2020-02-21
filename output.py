@@ -2,8 +2,8 @@
 #libs = {id: [ordered_book_ids]}, [ordered_libs]
 from collections import OrderedDict
 
-def gen_output(libs):
-    with open("out.txt",'w') as out:
+def gen_output(libs,name):
+    with open(name,'w') as out:
         out.write("{}\n".format(len(libs.keys())))
         for lib_id in libs.keys():
             book_list = libs[lib_id]
