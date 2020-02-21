@@ -12,7 +12,6 @@ class Library:
         self.signup = signup
         self.scans = scans
         self.books = books #dict {id: score}
-        print(self.books)
 
     def get_total_score(self):
         tot = 0
